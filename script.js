@@ -20,6 +20,32 @@ function drawWheel(){const s=canvas.width,c=s/2,r=s/2-8,sl=Math.PI*2/gifts.lengt
 function wrapText(text,x,y,maxWidth,lineHeight){const words=text.split(" ");let line="",lines=[];for(const w of words){const test=line+w+" ";if(ctx.measureText(test).width>maxWidth&&line){lines.push(line.trim());line=w+" "}else line=test}lines.push(line.trim());const sy=y-((lines.length-1)*lineHeight)/2;lines.forEach((l,i)=>ctx.fillText(l,x,sy+i*lineHeight));}
 function spinWheel(){if(spinning)return;spinning=true;const b=document.getElementById("spinBtn"),res=document.getElementById("wheelResult");b.disabled=true;b.textContent="SPINNING... ♡";res.textContent="";const extra=5+Math.floor(Math.random()*3),idx=Math.floor(Math.random()*gifts.length),sl=Math.PI*2/gifts.length,target=-Math.PI/2-(idx*sl+sl/2),norm=currentAngle%(Math.PI*2);let delta=target-norm;while(delta<0)delta+=Math.PI*2;const start=currentAngle,final=start+extra*Math.PI*2+delta,dur=4200,t0=performance.now();function anim(now){const t=Math.min((now-t0)/dur,1),ease=1-Math.pow(1-t,4);currentAngle=start+(final-start)*ease;drawWheel();if(t<1)requestAnimationFrame(anim);else{currentAngle=final;drawWheel();spinning=false;b.disabled=false;b.textContent="SPIN AGAIN ✦";res.innerHTML="You got: <span>"+gifts[idx]+"</span> 🎉";burstHearts();}}requestAnimationFrame(anim);}
 
+
+function paperConfetti(){
+  const pieces=90;
+  const shapes=["▰","◆","●","■"];
+  for(let i=0;i<pieces;i++){
+    const p=document.createElement("span");
+    p.className="paper-confetti";
+    p.textContent="";
+    const angle=(Math.random()*Math.PI*2);
+    const distance=180+Math.random()*520;
+    p.style.setProperty("--x",(Math.cos(angle)*distance)+"px");
+    p.style.setProperty("--y",(Math.sin(angle)*distance-120)+"px");
+    p.style.setProperty("--r",(Math.random()*1080-540)+"deg");
+    p.style.setProperty("--duration",(1.8+Math.random()*1.5)+"s");
+    p.style.width=(6+Math.random()*7)+"px";
+    p.style.height=(8+Math.random()*10)+"px";
+    p.style.borderRadius=Math.random()>.6?"50%":"2px";
+    p.style.background=`hsl(${Math.floor(Math.random()*360)}, 75%, 65%)`;
+    p.style.left=(50+(Math.random()*8-4))+"%";
+    p.style.top=(52+(Math.random()*8-4))+"%";
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),3500);
+  }
+  burstHearts();
+}
+
 function reveal(){document.querySelector(".secret-btn").style.display="none";document.querySelector(".gift").style.display="none";document.getElementById("finalMessage").classList.add("show");burstHearts();}
 function restart(){document.getElementById("finalMessage").classList.remove("show");document.querySelector(".secret-btn").style.display="inline-block";document.querySelector(".gift").style.display="block";goTo("welcome");}
 function createHeart(){const h=document.createElement("span");h.className="floating-heart";h.textContent=Math.random()>.2?"♡":"✦";h.style.left=Math.random()*100+"vw";h.style.fontSize=12+Math.random()*18+"px";h.style.animationDuration=7+Math.random()*7+"s";document.getElementById("hearts").appendChild(h);setTimeout(()=>h.remove(),15000);}

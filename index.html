@@ -20,7 +20,7 @@
 <section class="screen" id="birthday"><div class="center">
 <p class="eyebrow">05 · 10 · 2006 — YOUR DAY</p><h2>Happy Birthday,<br><span>Kiran</span> ♡</h2>
 <p class="subtitle">My Chuchapi. My favorite person.</p><p class="soft">I could've just wished you happy birthday...</p><p class="soft"><em>but you deserve a whole website.</em> 🥹</p>
-<div class="photo-hero"><img src="assets/photo5.jpeg" alt="A memory of us at the beach"><span>one of my favorite memories ♡</span></div>
+<div class="photo-hero"><img src="photo5.jpeg" alt="A memory of us at the beach"><span>one of my favorite memories ♡</span></div>
 <button class="btn" onclick="goTo('story')">Okay, show me →</button></div></section>
 
 <section class="screen" id="story"><div class="page">
@@ -49,13 +49,13 @@
 <section class="screen" id="gallery"><div class="page">
 <p class="eyebrow">OUR LITTLE GALLERY</p><h2>Moments I'd keep <span>forever</span> 📸</h2><p class="hint">A few pieces of our story.</p>
 <div class="gallery">
-<button class="polaroid tilt-left" onclick="openPhoto('assets/photo1.jpeg','Look at you, Chuchapi ♡')"><img src="assets/photo1.jpeg" alt=""><span>look at you ♡</span></button>
-<button class="polaroid tilt-right" onclick="openPhoto('assets/photo2.jpeg','Little Kiran 🥹')"><img src="assets/photo2.jpeg" alt=""><span>little Kiran 🥹</span></button>
-<button class="polaroid tilt-left" onclick="openPhoto('assets/photo3.jpeg','That smile. ♡')"><img src="assets/photo3.jpeg" alt=""><span>that smile ♡</span></button>
-<button class="polaroid tilt-right" onclick="openPhoto('assets/photo4.jpeg','Okay, model behaviour 😭')"><img src="assets/photo4.jpeg" alt=""><span>okay, model 😭</span></button>
-<button class="polaroid big tilt-left" onclick="openPhoto('assets/photo5.jpeg','One of my favorite memories. ❤️')"><img src="assets/photo5.jpeg" alt=""><span>one of my favorite memories ❤️</span></button>
-<button class="polaroid big tilt-right" onclick="openPhoto('assets/photo6.jpeg','Us being us. ♡')"><img src="assets/photo6.jpeg" alt=""><span>us being us ♡</span></button>
-<button class="polaroid tilt-left" onclick="openPhoto('assets/photo7.jpeg','The sleepy bus memory. 😂')"><img src="assets/photo7.jpeg" alt=""><span>the sleepy bus memory 😂</span></button>
+<button class="polaroid tilt-left" onclick="openPhoto('photo1.jpeg','Look at you, Chuchapi ♡')"><img src="photo1.jpeg" alt=""><span>look at you ♡</span></button>
+<button class="polaroid tilt-right" onclick="openPhoto('photo2.jpeg','Little Kiran 🥹')"><img src="photo2.jpeg" alt=""><span>little Kiran 🥹</span></button>
+<button class="polaroid tilt-left" onclick="openPhoto('photo3.jpeg','That smile. ♡')"><img src="photo3.jpeg" alt=""><span>that smile ♡</span></button>
+<button class="polaroid tilt-right" onclick="openPhoto('photo4.jpeg','Okay, model behaviour 😭')"><img src="photo4.jpeg" alt=""><span>okay, model 😭</span></button>
+<button class="polaroid big tilt-left" onclick="openPhoto('photo5.jpeg','One of my favorite memories. ❤️')"><img src="photo5.jpeg" alt=""><span>one of my favorite memories ❤️</span></button>
+<button class="polaroid big tilt-right" onclick="openPhoto('photo6.jpeg','Us being us. ♡')"><img src="photo6.jpeg" alt=""><span>us being us ♡</span></button>
+<button class="polaroid tilt-left" onclick="openPhoto('photo7.jpeg','The sleepy bus memory. 😂')"><img src="photo7.jpeg" alt=""><span>the sleepy bus memory 😂</span></button>
 </div><button class="btn" onclick="goTo('music')">A playlist for you 🎧 →</button></div></section>
 
 <section class="screen" id="music"><div class="page music-page">
@@ -83,8 +83,7 @@
 <section class="screen" id="wheel"><div class="page wheel-page">
 <p class="eyebrow">YOUR BIRTHDAY GIFT</p><h2>Spin for your <span>surprise</span> 🎁</h2><p class="hint">Whatever it lands on... you still get a birthday hug. ♡</p>
 <div class="wheel-wrap"><div class="pointer">▼</div><canvas id="wheelCanvas" width="420" height="420"></canvas></div>
-<button class="btn spin-button" id="spinBtn" onclick="spinWheel()">SPIN THE WHEEL ✦</button><p id="wheelResult" class="wheel-result"></p>
-<div class="gift-note"><small>Current gift options — edit them in script.js:</small><span>♡ A date</span><span>♡ Your favorite meal</span><span>♡ Surprise letter</span><span>♡ Movie night</span><span>♡ Mystery gift</span><span>♡ You choose!</span></div>
+<button class="btn spin-button" id="spinBtn" onclick="spinWheel()">SPIN THE WHEEL ✦</button><p id="wheelResult" class="wheel-result"></p><button class="btn confetti-button" onclick="paperConfetti()">PAPER CONFETTI! 🎊</button>
 <button class="btn secondary" onclick="goTo('final')">I'm ready for the last thing →</button></div></section>
 
 <section class="screen final-screen" id="final"><div class="center"><div class="gift">🎁</div><p class="eyebrow">THE LAST SURPRISE</p><h2>Don't click this.</h2>
