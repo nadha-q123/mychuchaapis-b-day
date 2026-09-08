@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mission Chuchapi — 06</title><link rel="stylesheet" href="style.css"></head><body><main class="card"><div class="stamp">SECRET<br>MISSION</div><div class="kicker">Mission Chuchapi · Lock 06</div><h1 class="title">THE FINAL LOCK</h1><div class="clue">Five locks are open. One remains.
+
+You already know the person, the memories, the nickname,
+and the little things hidden between the lines.
+
+Now solve this:
+
+I am made of pictures, words, music and a little bit of mischief.
+I was made for one particular birthday.
+You are looking at the final door right now.
+
+What am I?</div><label class="label" for="answer">Your answer</label><input id="answer" class="answer" autocomplete="off" placeholder="Type your answer…"><button onclick="checkAnswer()">UNLOCK 🔐</button><div id="msg" class="message"></div><div id="unlock" class="next locked"><p>🔒 Solve the clue to unlock <strong>FINAL SURPRISE QR</strong>.</p><img class="qr" src="final.png" alt="Locked QR code"><p class="tiny">The next code appears only after the correct answer.</p></div><div class="footer">Take your time. There is no prize for rushing. ♡</div></main><script>const answers=['birthday website','website','birthday surprise','surprise','birthday'];function clean(s){return s.toLowerCase().trim().replace(/[^a-z0-9 ]/g,'').replace(/\s+/g,' ')}function checkAnswer(){const v=clean(document.getElementById('answer').value);const ok=answers.some(a=>clean(a)===v);const msg=document.getElementById('msg');const box=document.getElementById('unlock');if(ok){msg.textContent='✓ Correct. The next lock is yours.';msg.style.color='#6f8a67';box.classList.remove('locked');box.scrollIntoView({behavior:'smooth',block:'center'})}else{msg.textContent='Not quite… think about it again 👀';msg.style.color='#9b5f57'}}document.getElementById('answer').addEventListener('keydown',e=>{if(e.key==='Enter')checkAnswer()});</script></body></html>
