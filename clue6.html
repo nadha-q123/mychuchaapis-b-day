@@ -1,12 +1,153 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mission Chuchapi — 06</title><link rel="stylesheet" href="style.css"></head><body><main class="card"><div class="stamp">SECRET<br>MISSION</div><div class="kicker">Mission Chuchapi · Lock 06</div><h1 class="title">THE FINAL LOCK</h1><div class="clue">Five locks are open. One remains.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mission Chuchapi — 06</title>
+<link rel="stylesheet" href="hunt-style.css">
+</head>
 
-You already know the person, the memories, the nickname,
-and the little things hidden between the lines.
+<body>
 
-Now solve this:
+<main class="card">
 
-I am made of pictures, words, music and a little bit of mischief.
-I was made for one particular birthday.
-You are looking at the final door right now.
+    <div class="stamp">SECRET<br>MISSION</div>
 
-What am I?</div><label class="label" for="answer">Your answer</label><input id="answer" class="answer" autocomplete="off" placeholder="Type your answer…"><button onclick="checkAnswer()">UNLOCK 🔐</button><div id="msg" class="message"></div><div id="unlock" class="next locked"><p>🔒 Solve the clue to unlock <strong>FINAL SURPRISE QR</strong>.</p><img class="qr" src="final.png" alt="Locked QR code"><p class="tiny">The next code appears only after the correct answer.</p></div><div class="footer">Take your time. There is no prize for rushing. ♡</div></main><script>const answers=['birthday website','website','birthday surprise','surprise','birthday'];function clean(s){return s.toLowerCase().trim().replace(/[^a-z0-9 ]/g,'').replace(/\s+/g,' ')}function checkAnswer(){const v=clean(document.getElementById('answer').value);const ok=answers.some(a=>clean(a)===v);const msg=document.getElementById('msg');const box=document.getElementById('unlock');if(ok){msg.textContent='✓ Correct. The next lock is yours.';msg.style.color='#6f8a67';box.classList.remove('locked');box.scrollIntoView({behavior:'smooth',block:'center'})}else{msg.textContent='Not quite… think about it again 👀';msg.style.color='#9b5f57'}}document.getElementById('answer').addEventListener('keydown',e=>{if(e.key==='Enter')checkAnswer()});</script></body></html>
+    <div class="kicker">Mission Chuchapi · Lock 06</div>
+
+    <h1 class="title">THE FINAL LOCK</h1>
+
+    <div class="clue">
+Five locks are open.
+
+You have followed the messages,
+the voice,
+the memories,
+the name,
+and the music.
+
+Now there is one final thing waiting for you.
+
+It is made of pictures, words, music,
+and a little bit of mischief.
+
+It was made for one particular birthday.
+
+What am I?
+    </div>
+
+    <label class="label" for="answer">Your answer</label>
+
+    <input
+        id="answer"
+        class="answer"
+        type="text"
+        autocomplete="off"
+        placeholder="Type your answer…"
+    >
+
+    <button onclick="checkAnswer()">UNLOCK 🔐</button>
+
+    <div id="msg" class="message"></div>
+
+    <!-- FINAL QR HIDDEN UNTIL CORRECT ANSWER -->
+    <div id="unlock" class="next" style="display:none;">
+
+        <p>🎉 <strong>You solved every lock!</strong> 🎉</p>
+
+        <p>
+            One final scan stands between you and your surprise. ♡
+        </p>
+
+        <img
+            class="qr"
+            src="final.png"
+            alt="Final QR code"
+        >
+
+        <p class="tiny">
+            Scan this final code. Your surprise is waiting. ❤️
+        </p>
+
+    </div>
+
+    <div class="footer">
+        You made it all the way. ♡
+    </div>
+
+</main>
+
+<script>
+
+const answers = [
+    "birthday website",
+    "birthday surprise",
+    "website",
+    "surprise",
+    "birthday",
+    "birthday webpage",
+    "webpage"
+];
+
+function clean(text) {
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9 ]/g, "")
+        .replace(/\s+/g, " ");
+}
+
+function checkAnswer() {
+
+    const input = document.getElementById("answer");
+    const message = document.getElementById("msg");
+    const unlock = document.getElementById("unlock");
+
+    const userAnswer = clean(input.value);
+
+    const correct = answers.some(
+        answer => clean(answer) === userAnswer
+    );
+
+    if (correct) {
+
+        message.textContent =
+            "✓ Correct! You unlocked the final surprise.";
+
+        message.style.color = "#6f8a67";
+
+        // Reveal final QR
+        unlock.style.display = "block";
+
+        unlock.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    } else {
+
+        message.textContent =
+            "Not quite… you're so close 👀";
+
+        message.style.color = "#9b5f57";
+
+        // Keep final QR hidden
+        unlock.style.display = "none";
+    }
+}
+
+document.getElementById("answer").addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
