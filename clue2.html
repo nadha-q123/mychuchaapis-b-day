@@ -1,5 +1,134 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mission Chuchapi — 02</title><link rel="stylesheet" href="style.css"></head><body><main class="card"><div class="stamp">SECRET<br>MISSION</div><div class="kicker">Mission Chuchapi · Lock 02</div><h1 class="title">THE SECOND LOCK</h1><div class="clue">I disappear the moment you hear me,
-but sometimes you replay me again and again.
-I can make you laugh without showing a face.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mission Chuchapi — 02</title>
+<link rel="stylesheet" href="hunt-style.css">
+</head>
 
-What am I?</div><label class="label" for="answer">Your answer</label><input id="answer" class="answer" autocomplete="off" placeholder="Type your answer…"><button onclick="checkAnswer()">UNLOCK 🔐</button><div id="msg" class="message"></div><div id="unlock" class="next locked"><p>🔒 Solve the clue to unlock <strong>QR 3</strong>.</p><img class="qr" src="qr3.png" alt="Locked QR code"><p class="tiny">The next code appears only after the correct answer.</p></div><div class="footer">Take your time. There is no prize for rushing. ♡</div></main><script>const answers=['voice note','voice message','voicenote','voice'];function clean(s){return s.toLowerCase().trim().replace(/[^a-z0-9 ]/g,'').replace(/\s+/g,' ')}function checkAnswer(){const v=clean(document.getElementById('answer').value);const ok=answers.some(a=>clean(a)===v);const msg=document.getElementById('msg');const box=document.getElementById('unlock');if(ok){msg.textContent='✓ Correct. The next lock is yours.';msg.style.color='#6f8a67';box.classList.remove('locked');box.scrollIntoView({behavior:'smooth',block:'center'})}else{msg.textContent='Not quite… think about it again 👀';msg.style.color='#9b5f57'}}document.getElementById('answer').addEventListener('keydown',e=>{if(e.key==='Enter')checkAnswer()});</script></body></html>
+<body>
+
+<main class="card">
+
+    <div class="stamp">SECRET<br>MISSION</div>
+
+    <div class="kicker">Mission Chuchapi · Lock 02</div>
+
+    <h1 class="title">THE SECOND LOCK</h1>
+
+    <div class="clue">
+I disappear the moment you hear me,
+but you can replay me whenever you want.
+
+I can make you laugh without showing a face,
+and I can carry someone's voice across the distance.
+
+What am I?
+    </div>
+
+    <label class="label" for="answer">Your answer</label>
+
+    <input
+        id="answer"
+        class="answer"
+        type="text"
+        autocomplete="off"
+        placeholder="Type your answer…"
+    >
+
+    <button onclick="checkAnswer()">UNLOCK 🔐</button>
+
+    <div id="msg" class="message"></div>
+
+    <!-- QR 3 stays completely hidden until the answer is correct -->
+    <div id="unlock" class="next" style="display:none;">
+
+        <p>✓ Correct! You've unlocked <strong>QR 3</strong>.</p>
+
+        <img
+            class="qr"
+            src="qr3.png"
+            alt="QR code for Clue 3"
+        >
+
+        <p class="tiny">
+            Scan this code to continue your mission. ♡
+        </p>
+
+    </div>
+
+    <div class="footer">
+        Two locks down. Keep going. ♡
+    </div>
+
+</main>
+
+<script>
+const answers = [
+    "voice note",
+    "voice message",
+    "voice",
+    "voicenote",
+    "voicemessage"
+];
+
+function clean(text) {
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9 ]/g, "")
+        .replace(/\s+/g, " ");
+}
+
+function checkAnswer() {
+
+    const input = document.getElementById("answer");
+    const message = document.getElementById("msg");
+    const unlock = document.getElementById("unlock");
+
+    const userAnswer = clean(input.value);
+
+    const correct = answers.some(
+        answer => clean(answer) === userAnswer
+    );
+
+    if (correct) {
+
+        message.textContent =
+            "✓ Correct! The next lock is yours.";
+
+        message.style.color = "#6f8a67";
+
+        unlock.style.display = "block";
+
+        unlock.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    } else {
+
+        message.textContent =
+            "Not quite… think about it again 👀";
+
+        message.style.color = "#9b5f57";
+
+        unlock.style.display = "none";
+    }
+}
+
+document.getElementById("answer").addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+
+    }
+);
+</script>
+
+</body>
+</html>
