@@ -14,7 +14,9 @@
 <section class="screen active" id="welcome"><div class="intro">
 <div class="ornament">✦ ♡ ✦</div><div class="envelope"><div class="envelope-flap"></div><div class="letter-card">K</div></div>
 <p class="eyebrow">A little surprise for you</p><h1>You have one<br><span>special message.</span></h1>
-<p class="subtext">Made especially for my Chuchapi. ♡</p><button class="btn" onclick="goTo('birthday')">Open it ♡</button>
+<p class="subtext">Made especially for my Chuchapi. ♡</p><button class="btn" onclick="document.getElementById('welcome').classList.remove('active'); document.getElementById('birthday').classList.add('active'); window.scrollTo(0,0);">
+    Open it ♡
+</button>
 </div></section>
 
 <section class="screen" id="birthday"><div class="center">
