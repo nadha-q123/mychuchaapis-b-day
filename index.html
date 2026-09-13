@@ -1,140 +1,951 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For Chuchh — Happy Birthday ♡</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
 </head>
+
+
 <body>
+
 <div id="hearts"></div>
-<header class="topbar"><div class="logo">K ♡ N</div><button class="music-btn" id="musicBtn" onclick="toggleMusic()">♫</button></header>
 
-<section class="screen active" id="welcome"><div class="intro">
-<div class="ornament">✦ ♡ ✦</div><div class="envelope"><div class="envelope-flap"></div><div class="letter-card">K</div></div>
-<p class="eyebrow">A little surprise for you</p><h1>You have one<br><span>special message.</span></h1>
-<p class="subtext">Made especially for my Chuchapi. ♡</p><button class="btn" onclick="document.getElementById('welcome').classList.remove('active'); document.getElementById('birthday').classList.add('active'); window.scrollTo(0,0);">
-    Open it ♡
-</button>
-</div></section>
 
-<section class="screen" id="birthday"><div class="center">
-<p class="eyebrow">05 · 10 · 2006 — YOUR DAY</p><h2>Happy Birthday,<br><span>Kiran</span> ♡</h2>
-<p class="subtitle">My Chuchapi. My favorite person.</p><p class="soft">I could've just wished you happy birthday...</p><p class="soft"><em>but you deserve a whole ass website.</em> 🥹</p>
-<div class="photo-hero"><img src="photo5.jpeg" alt="A memory of us at the beach"><span>one of our favorite memories ♡</span></div>
-<button class="btn" onclick="document.getElementById('birthday').classList.remove('active'); document.getElementById('story').classList.add('active'); alert(document.getElementById('story').innerHTML.substring(0,100)); window.scrollTo(0,0);">
-    Okay, show me →
-</button>
-<section class="screen" id="story"><div class="page">
-<p class="eyebrow">OUR LITTLE STORY</p><h2>From “aww” to <span>us</span> 🌷</h2>
-<div class="timeline">
-<article class="timeline-item"><span class="dot"></span><div><small>THE FIRST IMPRESSION</small><h3>“Aww, he is so sweet.”</h3><p>That was my first thought about you. And honestly, that impression never changed. 🥹</p></div></article>
-<article class="timeline-item"><span class="dot"></span><div><small>SOMEWHERE ALONG THE WAY</small><h3>You became my safest place.</h3><p>Somewhere between all the conversations, stories, laughs and little moments, you became someone I could always turn to.</p></div></article>
-<article class="timeline-item"><span class="dot"></span><div><small>THE MEMORIES</small><h3>Adventures, chaos & us.</h3><p>From silly moments to the adventures we've shared, every memory has a little piece of you that I want to keep forever.</p></div></article>
-<article class="timeline-item"><span class="dot"></span><div><small>MY THERAPIST</small><h3>And here I am. ♡</h3><p>So fearless. Healed a lot from all the anxiety and stress I have been through. This healing happened only because of kiran🥹</p></div></article>
-<article class="timeline-item"><span class="dot"></span><div><small>TODAY</small><h3>And here we are. ♡</h3><p>Still making memories, still annoying each other, still laughing, and still choosing each other.</p></div></article>
-</div><button class="btn" onclick="document.getElementById('story').classList.remove('active'); document.getElementById('things').classList.add('active'); window.scrollTo(0,0);">
-    There's more →
-</button>
+<!-- =========================
+     TOP BAR
+     ========================= -->
 
-<section class="screen" id="things"><div class="page">
-<p class="eyebrow">A VERY SMALL LIST</p><h2>Things I love about <span>you</span> 🫶</h2><p class="hint">Tap each little heart.</p>
-<div class="cards">
-<button class="love-card" onclick="flipCard(this)"><span class="front">♡</span><span class="back">The way you care about me every time.<small>It makes me feel loved.</small></span></button>
-<button class="love-card" onclick="flipCard(this)"><span class="front">♡</span><span class="back">Your stories & kona.<small>I could listen to them forever.</small></span></button>
-<button class="love-card" onclick="flipCard(this)"><span class="front">♡</span><span class="back">How thoughtful & kind you are.<small>Especially with everyone you love.</small></span></button>
-<button class="love-card" onclick="flipCard(this)"><span class="front">♡</span><span class="back">Your kunji heart.<small>And all the love you have for Naachi.</small></span></button>
-<button class="love-card" onclick="flipCard(this)"><span class="front">♡</span><span class="back">Your chunjan. 😭♡<small>Yes, this absolutely had to be here.</small></span></button>
-<button class="love-card" onclick="flipCard(this)"><span class="front">♡</span><span class="back">How safe & happy I feel beside you.<small>My favorite feeling.</small></span></button>
-<button class="love-card" onclick="flipCard(this)"><span class="front">♡</span><span class="back">Every adventure we've shared.<small>And all the ones still waiting for us.</small></span></button>
-<button class="love-card" onclick="flipCard(this)"><span class="front">♡</span><span class="back">Our sneaky-peaky moments.<small>Warm hugs, kisses & tiny memories.</small></span></button>
-<button class="love-card" onclick="flipCard(this)"><span class="front">♡</span><span class="back">Simply... you.<small>Because I wouldn't replace you with anyone.</small></span></button>
-</div><button class="btn" onclick="document.getElementById('things').classList.remove('active'); document.getElementById('gallery').classList.add('active'); window.scrollTo(0,0);">
-    Our memories 📸 →
-</button>
-<section class="screen" id="gallery"><div class="page">
-<p class="eyebrow">OUR LITTLE GALLERY</p><h2>Moments I'd keep <span>forever</span> 📸</h2><p class="hint">A few pieces of our story.</p>
-<div class="gallery">
-<button class="polaroid tilt-left" onclick="openPhoto('photo1.jpeg','Look at you, Chuchapi ♡')"><img src="photo1.jpeg" alt=""><span>look at you ♡</span></button>
-<button class="polaroid tilt-right" onclick="openPhoto('photo2.jpeg','Little Kiran 🥹')"><img src="photo2.jpeg" alt=""><span>little Kiran 🥹</span></button>
-<button class="polaroid tilt-left" onclick="openPhoto('photo3.jpeg','That cute smile. ♡')"><img src="photo3.jpeg" alt=""><span>that cute smile ♡</span></button>
-<button class="polaroid tilt-right" onclick="openPhoto('photo4.jpeg','looking like a wow😭')"><img src="photo4.jpeg" alt=""><span>looking like a wow😭</span></button>
-<button class="polaroid big tilt-left" onclick="openPhoto('photo5.jpeg','One of my favorite memories. ❤️')"><img src="photo5.jpeg" alt=""><span>one of my favorite memories ❤️</span></button>
-<button class="polaroid big tilt-right" onclick="openPhoto('photo6.jpeg','Us being us. ♡')"><img src="photo6.jpeg" alt=""><span>us being us ♡</span></button>
-<button class="polaroid tilt-left" onclick="openPhoto('photo7.jpeg','The sleepy bus memory. ')"><img src="photo7.jpeg" alt=""><span>the sleepy bus memory </span></button>
-</div><button class="btn" onclick="document.getElementById('gallery').classList.remove('active'); document.getElementById('music').classList.add('active'); window.scrollTo(0,0);">
-    A playlist for you 🎧 →
-</button>
+<header class="topbar">
 
-<section class="screen" id="music"><div class="page music-page">
-<p class="eyebrow">PRESS PLAY</p><h2>Our little <span>soundtrack</span> 🎧</h2><p class="subtitle">For the moments when words aren't enough.</p>
-<div class="vinyl"><div class="record"><div class="record-center">♡</div></div></div>
-<div class="spotify-box">
-    <p class="spotify-title">YOUR SPOTIFY PLAYLIST</p>
-    <p class="hint">A little soundtrack for us — picked especially for you. ♡</p>
+    <div class="logo">K ♡ N</div>
 
-    <iframe
-        class="spotify-embed"
-        src="https://open.spotify.com/embed/playlist/0nVwYuyQeo4Gn0JG6Mx4Hw?utm_source=generator"
-        width="100%"
-        height="352"
-        frameborder="0"
-        allowfullscreen
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-        title="Kiran birthday playlist">
-    </iframe>
-</div>
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        ♫
+    </button>
 
-<button class="btn" onclick="document.getElementById('music').classList.remove('active'); document.getElementById('letter').classList.add('active'); window.scrollTo(0,0);">
-    Now for the letter 💌 →
-</button>
+</header>
 
-</div>
+
+<!-- =========================
+     WELCOME
+     ========================= -->
+
+<section class="screen active" id="welcome">
+
+    <div class="intro">
+
+        <div class="ornament">✦ ♡ ✦</div>
+
+        <div class="envelope">
+            <div class="envelope-flap"></div>
+            <div class="letter-card">K</div>
+        </div>
+
+        <p class="eyebrow">A little surprise for you</p>
+
+        <h1>
+            You have one<br>
+            <span>special message.</span>
+        </h1>
+
+        <p class="subtext">
+            Made especially for my Chuchapi. ♡
+        </p>
+
+        <button class="btn"
+        onclick="document.getElementById('welcome').classList.remove('active'); document.getElementById('birthday').classList.add('active'); window.scrollTo(0,0);">
+            Open it ♡
+        </button>
+
+    </div>
+
 </section>
 
-<section class="screen" id="letter"><div class="page letter-page">
-<p class="eyebrow">THE LITTLE BIRTHDAY EDITION · NO. 01</p>
-<h2>The things I <span>never want to forget</span></h2>
-<div class="vintage-letter">
-<div class="paper-tape tape-one">♡</div><div class="paper-tape tape-two">✦</div><div class="pressed-flower">❀</div>
-<p class="handwritten opening">Happy birthday to the person who holds my whole heart. ❤️</p>
-<p>I honestly have no words to fill this letter. Writing this to you is probably one of the most emotional moments of my life.</p>
-<p>You were the only person who stood by me, even when you were mentally tired yourself. You were the safest place I could find, and you became everything to me.</p>
-<p>Even after all the fights and everything we’ve been through, you are still my safest place, and somehow, I love you even more.</p>
-<p>I still remember my first impression of you — “Aww, such a sweet guy.” And honestly, that impression never changed. 🥹</p>
-<p>I’m sorry for all the times I’ve been angry at you and for the things I may have said or done. But today is your day, and all I want is for you to be happy.</p>
-<p>So, so many happy returns of the day! May God bless you with everything you deserve and fill your life with happiness, love, and beautiful moments.</p>
-<p>Thank you for being exactly who you are. Thank you for being there for me and for being my safest place through everything.</p>
-<p class="handwritten">I love you so, so, so much, Chuchapi. ❤️</p><p>Happy birthday once again. 🎂</p>
-<p class="handwritten closing">I love you, today and always. ❤️</p><div class="signature">♡ Naachi</div>
-</div><button class="btn" onclick="document.getElementById('letter').classList.remove('active'); document.getElementById('wheel').classList.add('active'); window.scrollTo(0,0);">
-    One last surprise... 🎁 →
-</button>
 
-<section class="screen" id="wheel"><div class="page wheel-page">
-<p class="eyebrow">YOUR BIRTHDAY GIFT</p><h2>Spin for your <span>surprise</span> 🎁</h2><p class="hint">Whatever it lands on... you still get a birthday hug. ♡</p>
-<div class="wheel-wrap"><div class="pointer">▼</div><canvas id="wheelCanvas" width="420" height="420"></canvas></div>
-<button class="btn spin-button" id="spinBtn" onclick="spinWheel()">SPIN THE WHEEL ✦</button><p id="wheelResult" class="wheel-result"></p>
-<button class="btn secondary" onclick="document.getElementById('wheel').classList.remove('active'); document.getElementById('final').classList.add('active'); window.scrollTo(0,0);">
-    I'm ready for the last thing →
-</button>
 
-<section class="screen final-screen" id="final"><div class="center"><div class="gift">🎁</div><p class="eyebrow">THE LAST SURPRISE</p><h2>Don't click this.</h2>
-<button class="secret-btn" onclick="reveal()">Definitely don't click</button>
-<div id="finalMessage" class="final-message"><div class="confetti">♡ ✦ ♡ ✦ ♡ ✦ ♡</div><h2>Happy Birthday, <span>Kiran.</span> ❤️</h2>
-<p>Chuchapi, if you ever forget how loved you are, come back here.</p><p class="large-love">You are so, so special to me.</p><p>Here's to more adventures, more stories, more laughs, more chaos and many more birthdays together. ♡</p>
-<p class="signature-final">With all my love,<br>your Naachi ♡</p><button class="btn" onclick="restart()">Replay our story ↻</button></div></div></section>
+<!-- =========================
+     BIRTHDAY
+     ========================= -->
 
-<div class="lightbox" id="lightbox" onclick="closePhoto(event)"><button class="close" onclick="closePhoto()">×</button><img id="lightboxImg" src="" alt=""><p id="lightboxCaption"></p></div>
+<section class="screen" id="birthday">
+
+    <div class="center">
+
+        <p class="eyebrow">
+            05 · 10 · 2006 — YOUR DAY
+        </p>
+
+        <h2>
+            Happy Birthday,<br>
+            <span>Kiran</span> ♡
+        </h2>
+
+        <p class="subtitle">
+            My Chuchapi. My favorite person.
+        </p>
+
+        <p class="soft">
+            I could've just wished you happy birthday...
+        </p>
+
+        <p class="soft">
+            <em>but you deserve a whole ass website.</em> 🥹
+        </p>
+
+        <div class="photo-hero">
+
+            <img src="photo5.jpeg"
+                 alt="A memory of us at the beach">
+
+            <span>
+                one of our favorite memories ♡
+            </span>
+
+        </div>
+
+        <button class="btn"
+        onclick="document.getElementById('birthday').classList.remove('active'); document.getElementById('story').classList.add('active'); window.scrollTo(0,0);">
+            Okay, show me →
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     STORY
+     ========================= -->
+
+<section class="screen" id="story">
+
+    <div class="page">
+
+        <p class="eyebrow">
+            OUR LITTLE STORY
+        </p>
+
+        <h2>
+            From “aww” to <span>us</span> 🌷
+        </h2>
+
+
+        <div class="timeline">
+
+            <article class="timeline-item">
+
+                <span class="dot"></span>
+
+                <div>
+
+                    <small>
+                        THE FIRST IMPRESSION
+                    </small>
+
+                    <h3>
+                        “Aww, he is so sweet.”
+                    </h3>
+
+                    <p>
+                        That was my first thought about you.
+                        And honestly, that impression never changed. 🥹
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="timeline-item">
+
+                <span class="dot"></span>
+
+                <div>
+
+                    <small>
+                        SOMEWHERE ALONG THE WAY
+                    </small>
+
+                    <h3>
+                        You became my safest place.
+                    </h3>
+
+                    <p>
+                        Somewhere between all the conversations,
+                        stories, laughs and little moments,
+                        you became someone I could always turn to.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="timeline-item">
+
+                <span class="dot"></span>
+
+                <div>
+
+                    <small>
+                        THE MEMORIES
+                    </small>
+
+                    <h3>
+                        Adventures, chaos & us.
+                    </h3>
+
+                    <p>
+                        From silly moments to the adventures we've shared,
+                        every memory has a little piece of you that I want
+                        to keep forever.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="timeline-item">
+
+                <span class="dot"></span>
+
+                <div>
+
+                    <small>
+                        MY THERAPIST
+                    </small>
+
+                    <h3>
+                        And here I am. ♡
+                    </h3>
+
+                    <p>
+                        So fearless. Healed a lot from all the anxiety
+                        and stress I have been through. This healing
+                        happened only because of kiran🥹
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="timeline-item">
+
+                <span class="dot"></span>
+
+                <div>
+
+                    <small>
+                        TODAY
+                    </small>
+
+                    <h3>
+                        And here we are. ♡
+                    </h3>
+
+                    <p>
+                        Still making memories, still annoying each other,
+                        still laughing, and still choosing each other.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <button class="btn"
+        onclick="document.getElementById('story').classList.remove('active'); document.getElementById('things').classList.add('active'); window.scrollTo(0,0);">
+            There's more →
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     THINGS I LOVE
+     ========================= -->
+
+<section class="screen" id="things">
+
+    <div class="page">
+
+        <p class="eyebrow">
+            A VERY SMALL LIST
+        </p>
+
+        <h2>
+            Things I love about <span>you</span> 🫶
+        </h2>
+
+        <p class="hint">
+            Tap each little heart.
+        </p>
+
+
+        <div class="cards">
+
+
+            <button class="love-card"
+            onclick="flipCard(this)">
+
+                <span class="front">♡</span>
+
+                <span class="back">
+                    The way you care about me every time.
+                    <small>
+                        It makes me feel loved.
+                    </small>
+                </span>
+
+            </button>
+
+
+            <button class="love-card"
+            onclick="flipCard(this)">
+
+                <span class="front">♡</span>
+
+                <span class="back">
+                    Your stories & kona.
+                    <small>
+                        I could listen to them forever.
+                    </small>
+                </span>
+
+            </button>
+
+
+            <button class="love-card"
+            onclick="flipCard(this)">
+
+                <span class="front">♡</span>
+
+                <span class="back">
+                    How thoughtful & kind you are.
+                    <small>
+                        Especially with everyone you love.
+                    </small>
+                </span>
+
+            </button>
+
+
+            <button class="love-card"
+            onclick="flipCard(this)">
+
+                <span class="front">♡</span>
+
+                <span class="back">
+                    Your kunji heart.
+                    <small>
+                        And all the love you have for Naachi.
+                    </small>
+                </span>
+
+            </button>
+
+
+            <button class="love-card"
+            onclick="flipCard(this)">
+
+                <span class="front">♡</span>
+
+                <span class="back">
+                    Your chunjan. 😭♡
+                    <small>
+                        Yes, this absolutely had to be here.
+                    </small>
+                </span>
+
+            </button>
+
+
+            <button class="love-card"
+            onclick="flipCard(this)">
+
+                <span class="front">♡</span>
+
+                <span class="back">
+                    How safe & happy I feel beside you.
+                    <small>
+                        My favorite feeling.
+                    </small>
+                </span>
+
+            </button>
+
+
+            <button class="love-card"
+            onclick="flipCard(this)">
+
+                <span class="front">♡</span>
+
+                <span class="back">
+                    Every adventure we've shared.
+                    <small>
+                        And all the ones still waiting for us.
+                    </small>
+                </span>
+
+            </button>
+
+
+            <button class="love-card"
+            onclick="flipCard(this)">
+
+                <span class="front">♡</span>
+
+                <span class="back">
+                    Our sneaky-peaky moments.
+                    <small>
+                        Warm hugs, kisses & tiny memories.
+                    </small>
+                </span>
+
+            </button>
+
+
+            <button class="love-card"
+            onclick="flipCard(this)">
+
+                <span class="front">♡</span>
+
+                <span class="back">
+                    Simply... you.
+                    <small>
+                        Because I wouldn't replace you with anyone.
+                    </small>
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+        <button class="btn"
+        onclick="document.getElementById('things').classList.remove('active'); document.getElementById('gallery').classList.add('active'); window.scrollTo(0,0);">
+            Our memories 📸 →
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     GALLERY
+     ========================= -->
+
+<section class="screen" id="gallery">
+
+    <div class="page">
+
+        <p class="eyebrow">
+            OUR LITTLE GALLERY
+        </p>
+
+        <h2>
+            Moments I'd keep <span>forever</span> 📸
+        </h2>
+
+        <p class="hint">
+            A few pieces of our story.
+        </p>
+
+
+        <div class="gallery">
+
+
+            <button class="polaroid tilt-left"
+            onclick="openPhoto('photo1.jpeg','Look at you, Chuchapi ♡')">
+
+                <img src="photo1.jpeg" alt="">
+
+                <span>
+                    look at you ♡
+                </span>
+
+            </button>
+
+
+            <button class="polaroid tilt-right"
+            onclick="openPhoto('photo2.jpeg','Little Kiran 🥹')">
+
+                <img src="photo2.jpeg" alt="">
+
+                <span>
+                    little Kiran 🥹
+                </span>
+
+            </button>
+
+
+            <button class="polaroid tilt-left"
+            onclick="openPhoto('photo3.jpeg','That cute smile. ♡')">
+
+                <img src="photo3.jpeg" alt="">
+
+                <span>
+                    that cute smile ♡
+                </span>
+
+            </button>
+
+
+            <button class="polaroid tilt-right"
+            onclick="openPhoto('photo4.jpeg','looking like a wow😭')">
+
+                <img src="photo4.jpeg" alt="">
+
+                <span>
+                    looking like a wow😭
+                </span>
+
+            </button>
+
+
+            <button class="polaroid big tilt-left"
+            onclick="openPhoto('photo5.jpeg','One of my favorite memories. ❤️')">
+
+                <img src="photo5.jpeg" alt="">
+
+                <span>
+                    one of my favorite memories ❤️
+                </span>
+
+            </button>
+
+
+            <button class="polaroid big tilt-right"
+            onclick="openPhoto('photo6.jpeg','Us being us. ♡')">
+
+                <img src="photo6.jpeg" alt="">
+
+                <span>
+                    us being us ♡
+                </span>
+
+            </button>
+
+
+            <button class="polaroid tilt-left"
+            onclick="openPhoto('photo7.jpeg','The sleepy bus memory.')">
+
+                <img src="photo7.jpeg" alt="">
+
+                <span>
+                    the sleepy bus memory
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+        <button class="btn"
+        onclick="document.getElementById('gallery').classList.remove('active'); document.getElementById('music').classList.add('active'); window.scrollTo(0,0);">
+            A playlist for you 🎧 →
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     MUSIC
+     ========================= -->
+
+<section class="screen" id="music">
+
+    <div class="page music-page">
+
+        <p class="eyebrow">
+            PRESS PLAY
+        </p>
+
+        <h2>
+            Our little <span>soundtrack</span> 🎧
+        </h2>
+
+        <p class="subtitle">
+            For the moments when words aren't enough.
+        </p>
+
+
+        <div class="vinyl">
+
+            <div class="record">
+
+                <div class="record-center">
+                    ♡
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="spotify-box">
+
+            <p class="spotify-title">
+                YOUR SPOTIFY PLAYLIST
+            </p>
+
+            <p class="hint">
+                A little soundtrack for us — picked especially for you. ♡
+            </p>
+
+
+            <iframe
+                class="spotify-embed"
+                src="https://open.spotify.com/embed/playlist/0nVwYuyQeo4Gn0JG6Mx4Hw?utm_source=generator"
+                width="100%"
+                height="352"
+                frameborder="0"
+                allowfullscreen
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                title="Kiran birthday playlist">
+            </iframe>
+
+        </div>
+
+
+        <button class="btn"
+        onclick="document.getElementById('music').classList.remove('active'); document.getElementById('letter').classList.add('active'); window.scrollTo(0,0);">
+            Now for the letter 💌 →
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LETTER
+     ========================= -->
+
+<section class="screen" id="letter">
+
+    <div class="page letter-page">
+
+        <p class="eyebrow">
+            THE LITTLE BIRTHDAY EDITION · NO. 01
+        </p>
+
+        <h2>
+            The things I <span>never want to forget</span>
+        </h2>
+
+
+        <div class="vintage-letter">
+
+            <div class="paper-tape tape-one">
+                ♡
+            </div>
+
+            <div class="paper-tape tape-two">
+                ✦
+            </div>
+
+            <div class="pressed-flower">
+                ❀
+            </div>
+
+
+            <p class="handwritten opening">
+                Happy birthday to the person who holds my whole heart. ❤️
+            </p>
+
+
+            <p>
+                I honestly have no words to fill this letter.
+                Writing this to you is probably one of the most
+                emotional moments of my life.
+            </p>
+
+
+            <p>
+                You were the only person who stood by me,
+                even when you were mentally tired yourself.
+                You were the safest place I could find,
+                and you became everything to me.
+            </p>
+
+
+            <p>
+                Even after all the fights and everything we've
+                been through, you are still my safest place,
+                and somehow, I love you even more.
+            </p>
+
+
+            <p>
+                I still remember my first impression of you —
+                “Aww, such a sweet guy.”
+                And honestly, that impression never changed. 🥹
+            </p>
+
+
+            <p>
+                I'm sorry for all the times I've been angry at you
+                and for the things I may have said or done.
+                But today is your day, and all I want is for you
+                to be happy.
+            </p>
+
+
+            <p>
+                So, so many happy returns of the day!
+                May God bless you with everything you deserve
+                and fill your life with happiness, love,
+                and beautiful moments.
+            </p>
+
+
+            <p>
+                Thank you for being exactly who you are.
+                Thank you for being there for me and for being
+                my safest place through everything.
+            </p>
+
+
+            <p class="handwritten">
+                I love you so, so, so much, Chuchapi. ❤️
+            </p>
+
+
+            <p>
+                Happy birthday once again. 🎂
+            </p>
+
+
+            <p class="handwritten closing">
+                I love you, today and always. ❤️
+            </p>
+
+
+            <div class="signature">
+                ♡ Naachi
+            </div>
+
+        </div>
+
+
+        <button class="btn"
+        onclick="document.getElementById('letter').classList.remove('active'); document.getElementById('wheel').classList.add('active'); window.scrollTo(0,0);">
+            One last surprise... 🎁 →
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     WHEEL
+     ========================= -->
+
+<section class="screen" id="wheel">
+
+    <div class="page wheel-page">
+
+        <p class="eyebrow">
+            YOUR BIRTHDAY GIFT
+        </p>
+
+        <h2>
+            Spin for your <span>surprise</span> 🎁
+        </h2>
+
+        <p class="hint">
+            Whatever it lands on... you still get a birthday hug. ♡
+        </p>
+
+
+        <div class="wheel-wrap">
+
+            <div class="pointer">
+                ▼
+            </div>
+
+            <canvas
+                id="wheelCanvas"
+                width="420"
+                height="420">
+            </canvas>
+
+        </div>
+
+
+        <button
+            class="btn spin-button"
+            id="spinBtn"
+            onclick="spinWheel()">
+            SPIN THE WHEEL ✦
+        </button>
+
+
+        <p
+            id="wheelResult"
+            class="wheel-result">
+        </p>
+
+
+        <button class="btn secondary"
+        onclick="document.getElementById('wheel').classList.remove('active'); document.getElementById('final').classList.add('active'); window.scrollTo(0,0);">
+            I'm ready for the last thing →
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FINAL
+     ========================= -->
+
+<section class="screen final-screen" id="final">
+
+    <div class="center">
+
+        <div class="gift">
+            🎁
+        </div>
+
+        <p class="eyebrow">
+            THE LAST SURPRISE
+        </p>
+
+        <h2>
+            Don't click this.
+        </h2>
+
+
+        <button
+            class="secret-btn"
+            onclick="reveal()">
+            Definitely don't click
+        </button>
+
+
+        <div
+            id="finalMessage"
+            class="final-message">
+
+            <div class="confetti">
+                ♡ ✦ ♡ ✦ ♡ ✦ ♡
+            </div>
+
+            <h2>
+                Happy Birthday,
+                <span>Kiran.</span> ❤️
+            </h2>
+
+            <p>
+                Chuchapi, if you ever forget how loved you are,
+                come back here.
+            </p>
+
+            <p class="large-love">
+                You are so, so special to me.
+            </p>
+
+            <p>
+                Here's to more adventures, more stories,
+                more laughs, more chaos and many more birthdays together. ♡
+            </p>
+
+            <p class="signature-final">
+                With all my love,<br>
+                your Naachi ♡
+            </p>
+
+
+            <button
+                class="btn"
+                onclick="restart()">
+                Replay our story ↻
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LIGHTBOX
+     ========================= -->
+
+<div
+    class="lightbox"
+    id="lightbox"
+    onclick="closePhoto(event)">
+
+    <button
+        class="close"
+        onclick="closePhoto()">
+        ×
+    </button>
+
+    <img
+        id="lightboxImg"
+        src=""
+        alt="">
+
+    <p
+        id="lightboxCaption">
+    </p>
+
+</div>
+
+
+
+<!-- =========================
+     AUDIO
+     ========================= -->
+
 <audio id="audio" loop>
-    <source src="" type="audio/mpeg">
+
+    <source
+        src=""
+        type="audio/mpeg">
+
 </audio>
 
-<script>
-alert("JavaScript is working!");
-</script>
+
+
+<!-- JAVASCRIPT -->
 
 <script src="script.js"></script>
 
