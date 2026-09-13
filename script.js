@@ -23,7 +23,6 @@ function goTo(id) {
     }
   }
 }
-  document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"});if(id==="wheel")drawWheel();if(id==="final")startHearts();}
 function flipCard(card){card.classList.toggle("flipped");}
 
 function openPhoto(src,caption){document.getElementById("lightboxImg").src=src;document.getElementById("lightboxCaption").textContent=caption;document.getElementById("lightbox").classList.add("show");}
