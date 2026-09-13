@@ -14,7 +14,7 @@
 <section class="screen active" id="welcome"><div class="intro">
 <div class="ornament">✦ ♡ ✦</div><div class="envelope"><div class="envelope-flap"></div><div class="letter-card">K</div></div>
 <p class="eyebrow">A little surprise for you</p><h1>You have one<br><span>special message.</span></h1>
-<p class="subtext">Made especially for my Chuchapi. ♡</p><button class="btn" onclick="document.getElementById('welcome').classList.remove('active'); document.getElementById('birthday').classList.add('active'); window.scrollTo(0,0);">
+<p class="subtext">Made especially for my Chuchapi. ♡</p><button class="btn" onclick="goTo('birthday')">
     Open it ♡
 </button>
 </div></section>
@@ -64,8 +64,31 @@
 <section class="screen" id="music"><div class="page music-page">
 <p class="eyebrow">PRESS PLAY</p><h2>Our little <span>soundtrack</span> 🎧</h2><p class="subtitle">For the moments when words aren't enough.</p>
 <div class="vinyl"><div class="record"><div class="record-center">♡</div></div></div>
-<div class="spotify-box"><p class="spotify-title">YOUR SPOTIFY PLAYLIST</p><p class="hint">A little soundtrack for us — picked especially for you. ♡</p><iframe class="spotify-embed" src="https://open.spotify.com/embed/playlist/0nVwYuyQeo4Gn0JG6Mx4Hw?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Kiran birthday playlist"></iframe></div></div>
-<button class="btn" onclick="goTo('letter')">Now for the letter 💌 →</button></div></section>
+<div class="spotify-box">
+  <p class="spotify-title">YOUR SPOTIFY PLAYLIST</p>
+  <p class="hint">
+    A little soundtrack for us — picked especially for you. ♡
+  </p>
+
+  <iframe
+    class="spotify-embed"
+    src="https://open.spotify.com/embed/playlist/0nVwYuyQeo4Gn0JG6Mx4Hw?utm_source=generator"
+    width="100%"
+    height="352"
+    frameborder="0"
+    allowfullscreen
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy"
+    title="Kiran birthday playlist">
+  </iframe>
+</div>
+
+<button class="btn" onclick="goTo('letter')">
+  Now for the letter 💌 →
+</button>
+
+</div>
+</section>
 
 <section class="screen" id="letter"><div class="page letter-page">
 <p class="eyebrow">THE LITTLE BIRTHDAY EDITION · NO. 01</p>
