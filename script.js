@@ -2,7 +2,28 @@
 const SPOTIFY_PLAYLIST_URL = ""; // paste your Spotify playlist URL here when you send it
 
 const screens=document.querySelectorAll(".screen");
-function goTo(id){screens.forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"});if(id==="wheel")drawWheel();if(id==="final")startHearts();}
+function goTo(id) {
+  screens.forEach(s => s.classList.remove("active"));
+
+  const nextScreen = document.getElementById(id);
+
+  if (nextScreen) {
+    nextScreen.classList.add("active");
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+    if (id === "wheel" && typeof drawWheel === "function") {
+      drawWheel();
+    }
+
+    if (id === "final" && typeof startHearts === "function") {
+      startHearts();
+    }
+  }
+}
+  document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"});if(id==="wheel")drawWheel();if(id==="final")startHearts();}
 function flipCard(card){card.classList.toggle("flipped");}
 
 function openPhoto(src,caption){document.getElementById("lightboxImg").src=src;document.getElementById("lightboxCaption").textContent=caption;document.getElementById("lightbox").classList.add("show");}
