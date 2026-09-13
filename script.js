@@ -1,4 +1,8 @@
-```js
+/* =========================================================
+   BIRTHDAY WEBSITE — MAIN JAVASCRIPT
+========================================================= */
+
+
 /* =========================================================
    PERSONAL SETTINGS
 ========================================================= */
@@ -10,34 +14,43 @@ const SPOTIFY_PLAYLIST_URL = "";
    SCREEN NAVIGATION
 ========================================================= */
 
-const screens = document.querySelectorAll(".screen");
-
 function goTo(id) {
-  screens.forEach(screen => {
-    screen.classList.remove("active");
-  });
 
-  const nextScreen = document.getElementById(id);
+    const screens = document.querySelectorAll(".screen");
 
-  if (!nextScreen) {
-    console.error("Screen not found:", id);
-    return;
-  }
+    screens.forEach(screen => {
+        screen.classList.remove("active");
+    });
 
-  nextScreen.classList.add("active");
+    const nextScreen = document.getElementById(id);
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+    if (!nextScreen) {
+        console.error("Cannot find screen:", id);
+        return;
+    }
 
-  if (id === "wheel" && typeof drawWheel === "function") {
-    drawWheel();
-  }
+    nextScreen.classList.add("active");
 
-  if (id === "final" && typeof startHearts === "function") {
-    startHearts();
-  }
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+
+    /* Draw wheel whenever wheel screen opens */
+
+    if (id === "wheel") {
+        setTimeout(() => {
+            drawWheel();
+        }, 50);
+    }
+
+
+    /* Start hearts on final screen */
+
+    if (id === "final") {
+        startHearts();
+    }
 }
 
 
@@ -46,9 +59,17 @@ function goTo(id) {
 ========================================================= */
 
 function flipCard(card) {
-  if (card) {
+
+    if (!card) {
+        return;
+    }
+
     card.classList.toggle("flipped");
-  }
+
+    console.log(
+        "Card flipped:",
+        card.classList.contains("flipped")
+    );
 }
 
 
@@ -57,34 +78,40 @@ function flipCard(card) {
 ========================================================= */
 
 function openPhoto(src, caption) {
-  const img = document.getElementById("lightboxImg");
-  const text = document.getElementById("lightboxCaption");
-  const lightbox = document.getElementById("lightbox");
 
-  if (!img || !lightbox) return;
+    const lightbox = document.getElementById("lightbox");
+    const img = document.getElementById("lightboxImg");
+    const text = document.getElementById("lightboxCaption");
 
-  img.src = src;
+    if (!lightbox || !img) {
+        return;
+    }
 
-  if (text) {
-    text.textContent = caption || "";
-  }
+    img.src = src;
 
-  lightbox.classList.add("show");
+    if (text) {
+        text.textContent = caption || "";
+    }
+
+    lightbox.classList.add("show");
 }
 
 
-function closePhoto(e) {
-  const lightbox = document.getElementById("lightbox");
+function closePhoto(event) {
 
-  if (!lightbox) return;
+    const lightbox = document.getElementById("lightbox");
 
-  if (
-    !e ||
-    e.target.id === "lightbox" ||
-    e.target.classList.contains("close")
-  ) {
-    lightbox.classList.remove("show");
-  }
+    if (!lightbox) {
+        return;
+    }
+
+    if (
+        !event ||
+        event.target === lightbox ||
+        event.target.classList.contains("close")
+    ) {
+        lightbox.classList.remove("show");
+    }
 }
 
 
@@ -94,37 +121,46 @@ function closePhoto(e) {
 
 function setupSpotify() {
 
-  if (!SPOTIFY_PLAYLIST_URL) {
-    return;
-  }
+    /*
+       The Spotify iframe is already inside index.html.
+       Therefore we don't need to replace it.
+    */
 
-  const match = SPOTIFY_PLAYLIST_URL.match(
-    /playlist[/:]([A-Za-z0-9]+)/
-  );
+    if (!SPOTIFY_PLAYLIST_URL) {
+        return;
+    }
 
-  if (!match) {
-    console.error("Invalid Spotify playlist URL.");
-    return;
-  }
+    const match = SPOTIFY_PLAYLIST_URL.match(
+        /playlist[/:]([A-Za-z0-9]+)/
+    );
 
-  const box = document.querySelector(".spotify-box");
+    if (!match) {
+        console.error("Invalid Spotify playlist URL.");
+        return;
+    }
 
-  if (!box) return;
+    const box = document.querySelector(".spotify-box");
 
-  box.innerHTML = `
-    <p class="spotify-title">YOUR SPOTIFY PLAYLIST</p>
+    if (!box) {
+        return;
+    }
 
-    <iframe
-      style="border-radius:14px"
-      src="https://open.spotify.com/embed/playlist/${match[1]}?utm_source=generator"
-      width="100%"
-      height="352"
-      frameborder="0"
-      allowfullscreen
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy">
-    </iframe>
-  `;
+    box.innerHTML = `
+        <p class="spotify-title">
+            YOUR SPOTIFY PLAYLIST
+        </p>
+
+        <iframe
+            class="spotify-embed"
+            src="https://open.spotify.com/embed/playlist/${match[1]}?utm_source=generator"
+            width="100%"
+            height="352"
+            frameborder="0"
+            allowfullscreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+        </iframe>
+    `;
 }
 
 
@@ -132,75 +168,98 @@ function setupSpotify() {
    BACKGROUND MUSIC
 ========================================================= */
 
-const audio = document.getElementById("audio");
-const musicBtn = document.getElementById("musicBtn");
-
 function toggleMusic() {
 
-  if (!audio || !musicBtn) {
-    return;
-  }
+    const audio = document.getElementById("audio");
+    const musicBtn = document.getElementById("musicBtn");
 
-  const source = audio.querySelector("source");
+    if (!audio || !musicBtn) {
+        return;
+    }
 
-  if (!source) {
-    alert(
-      "Add an MP3 file to your assets folder and set its filename in index.html."
-    );
-    return;
-  }
+    const source = audio.querySelector("source");
 
-  const src = source.getAttribute("src");
+    if (!source || !source.getAttribute("src")) {
 
-  if (!src) {
-    alert(
-      "Add an MP3 file to your assets folder and set its filename in index.html."
-    );
-    return;
-  }
+        alert(
+            "There is no background music file connected yet."
+        );
 
-  if (audio.paused) {
+        return;
+    }
 
-    audio.play()
-      .then(() => {
-        musicBtn.textContent = "❚❚";
-      })
-      .catch(error => {
-        console.error("Audio could not play:", error);
-      });
+    if (audio.paused) {
 
-  } else {
+        audio.play()
+            .then(() => {
+                musicBtn.textContent = "❚❚";
+            })
+            .catch(error => {
+                console.error("Audio could not play:", error);
+            });
 
-    audio.pause();
-    musicBtn.textContent = "♫";
+    } else {
 
-  }
+        audio.pause();
+        musicBtn.textContent = "♫";
+    }
 }
 
 
 /* =========================================================
-   SPIN WHEEL
+   SPIN WHEEL DATA
 ========================================================= */
 
 const gifts = [
-  "Boots 👢",
-  "A date night 💕",
-  "Movie night 🎬",
-  "Unlimited subscription to more kisses & hugs 💋🤗",
-  "You choose! ✦",
-  "One mystery gift 🎁"
+
+    "Boots 👢",
+
+    "A date night 💕",
+
+    "Movie night 🎬",
+
+    "Unlimited subscription to more kisses & hugs 💋🤗",
+
+    "You choose! ✦",
+
+    "One mystery gift 🎁"
+
 ];
 
-const canvas = document.getElementById("wheelCanvas");
 
+/* =========================================================
+   WHEEL VARIABLES
+========================================================= */
+
+let canvas = null;
 let ctx = null;
-
-if (canvas) {
-  ctx = canvas.getContext("2d");
-}
 
 let currentAngle = 0;
 let spinning = false;
+
+
+/* =========================================================
+   INITIALIZE CANVAS
+========================================================= */
+
+function initializeWheel() {
+
+    canvas = document.getElementById("wheelCanvas");
+
+    if (!canvas) {
+        console.error("wheelCanvas was not found.");
+        return;
+    }
+
+    ctx = canvas.getContext("2d");
+
+    if (!ctx) {
+        console.error("Could not get canvas context.");
+        return;
+    }
+
+    drawWheel();
+}
 
 
 /* =========================================================
@@ -209,106 +268,143 @@ let spinning = false;
 
 function drawWheel() {
 
-  if (!canvas || !ctx) {
-    return;
-  }
+    if (!canvas || !ctx) {
+        return;
+    }
 
-  const size = canvas.width;
-  const center = size / 2;
-  const radius = size / 2 - 8;
+    const size = canvas.width;
+    const center = size / 2;
+    const radius = size / 2 - 8;
 
-  const slice = (Math.PI * 2) / gifts.length;
+    const slice =
+        (Math.PI * 2) / gifts.length;
 
-  ctx.clearRect(0, 0, size, size);
 
-  const fills = [
-    "#f1d2d9",
-    "#ead8cf",
-    "#f4e4c9",
-    "#e5d4df",
-    "#f0d8c6",
-    "#e7d8cc"
-  ];
+    ctx.clearRect(
+        0,
+        0,
+        size,
+        size
+    );
 
-  for (let i = 0; i < gifts.length; i++) {
 
-    const angle = currentAngle + i * slice;
+    const fills = [
+
+        "#f1d2d9",
+        "#ead8cf",
+        "#f4e4c9",
+        "#e5d4df",
+        "#f0d8c6",
+        "#e7d8cc"
+
+    ];
+
+
+    /* Draw each slice */
+
+    for (let i = 0; i < gifts.length; i++) {
+
+        const angle =
+            currentAngle + i * slice;
+
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            center,
+            center
+        );
+
+        ctx.arc(
+            center,
+            center,
+            radius,
+            angle,
+            angle + slice
+        );
+
+        ctx.closePath();
+
+
+        ctx.fillStyle =
+            fills[i % fills.length];
+
+        ctx.fill();
+
+
+        ctx.strokeStyle =
+            "#fffaf4";
+
+        ctx.lineWidth = 4;
+
+        ctx.stroke();
+
+
+        /* Text */
+
+        ctx.save();
+
+        ctx.translate(
+            center,
+            center
+        );
+
+        ctx.rotate(
+            angle + slice / 2
+        );
+
+        ctx.textAlign = "right";
+        ctx.textBaseline = "middle";
+
+        ctx.fillStyle = "#603d46";
+
+        ctx.font =
+            "600 15px Poppins, sans-serif";
+
+
+        wrapText(
+            gifts[i],
+            radius - 25,
+            0,
+            130,
+            18
+        );
+
+        ctx.restore();
+    }
+
+
+    /* Center circle */
 
     ctx.beginPath();
 
-    ctx.moveTo(center, center);
-
     ctx.arc(
-      center,
-      center,
-      radius,
-      angle,
-      angle + slice
+        center,
+        center,
+        40,
+        0,
+        Math.PI * 2
     );
 
-    ctx.closePath();
+    ctx.fillStyle =
+        "#8f4e61";
 
-    ctx.fillStyle = fills[i % fills.length];
     ctx.fill();
 
-    ctx.strokeStyle = "#fffaf4";
-    ctx.lineWidth = 4;
-    ctx.stroke();
 
+    ctx.fillStyle = "#ffffff";
 
-    /* TEXT */
+    ctx.font =
+        "28px serif";
 
-    ctx.save();
-
-    ctx.translate(center, center);
-
-    ctx.rotate(angle + slice / 2);
-
-    ctx.textAlign = "right";
+    ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    ctx.fillStyle = "#603d46";
-    ctx.font = "600 15px Poppins";
-
-    wrapText(
-      gifts[i],
-      radius - 25,
-      0,
-      125,
-      18
+    ctx.fillText(
+        "♡",
+        center,
+        center
     );
-
-    ctx.restore();
-  }
-
-
-  /* CENTER CIRCLE */
-
-  ctx.beginPath();
-
-  ctx.arc(
-    center,
-    center,
-    38,
-    0,
-    Math.PI * 2
-  );
-
-  ctx.fillStyle = "#8f4e61";
-  ctx.fill();
-
-  ctx.fillStyle = "#fff";
-
-  ctx.font = "25px serif";
-
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-
-  ctx.fillText(
-    "♡",
-    center,
-    center
-  );
 }
 
 
@@ -317,185 +413,274 @@ function drawWheel() {
 ========================================================= */
 
 function wrapText(
-  text,
-  x,
-  y,
-  maxWidth,
-  lineHeight
+    text,
+    x,
+    y,
+    maxWidth,
+    lineHeight
 ) {
 
-  if (!ctx) return;
-
-  const words = text.split(" ");
-
-  let line = "";
-  const lines = [];
-
-  for (const word of words) {
-
-    const testLine = line + word + " ";
-
-    if (
-      ctx.measureText(testLine).width > maxWidth &&
-      line
-    ) {
-
-      lines.push(line.trim());
-
-      line = word + " ";
-
-    } else {
-
-      line = testLine;
-
+    if (!ctx) {
+        return;
     }
-  }
 
-  lines.push(line.trim());
+    const words =
+        text.split(" ");
 
-  const startY =
-    y -
-    ((lines.length - 1) * lineHeight) / 2;
+    const lines = [];
 
-  lines.forEach((lineText, index) => {
+    let line = "";
 
-    ctx.fillText(
-      lineText,
-      x,
-      startY + index * lineHeight
+
+    for (const word of words) {
+
+        const testLine =
+            line + word + " ";
+
+        const width =
+            ctx.measureText(testLine).width;
+
+
+        if (
+            width > maxWidth &&
+            line !== ""
+        ) {
+
+            lines.push(
+                line.trim()
+            );
+
+            line =
+                word + " ";
+
+        } else {
+
+            line =
+                testLine;
+        }
+    }
+
+
+    if (line.trim()) {
+        lines.push(line.trim());
+    }
+
+
+    const startY =
+        y -
+        ((lines.length - 1) * lineHeight) / 2;
+
+
+    lines.forEach(
+        (lineText, index) => {
+
+            ctx.fillText(
+                lineText,
+                x,
+                startY +
+                index * lineHeight
+            );
+
+        }
     );
-
-  });
 }
 
 
 /* =========================================================
-   SPIN WHEEL
+   SPIN THE WHEEL
 ========================================================= */
 
 function spinWheel() {
 
-  if (spinning) {
-    return;
-  }
-
-  if (!canvas || !ctx) {
-    console.error("Wheel canvas not found.");
-    return;
-  }
-
-  const button = document.getElementById("spinBtn");
-  const result = document.getElementById("wheelResult");
-
-  if (!button || !result) {
-    console.error("Wheel button or result element not found.");
-    return;
-  }
-
-  spinning = true;
-
-  button.disabled = true;
-  button.textContent = "SPINNING... ♡";
-
-  result.textContent = "";
+    console.log("SPIN BUTTON CLICKED");
 
 
-  /* Pick random gift */
-
-  const extraSpins =
-    5 + Math.floor(Math.random() * 3);
-
-  const index =
-    Math.floor(Math.random() * gifts.length);
-
-  const slice =
-    (Math.PI * 2) / gifts.length;
-
-
-  /* Calculate target angle */
-
-  const target =
-    -Math.PI / 2 -
-    (index * slice + slice / 2);
-
-  const normalized =
-    currentAngle % (Math.PI * 2);
-
-  let delta =
-    target - normalized;
-
-  while (delta < 0) {
-    delta += Math.PI * 2;
-  }
-
-
-  const startAngle = currentAngle;
-
-  const finalAngle =
-    startAngle +
-    extraSpins * Math.PI * 2 +
-    delta;
-
-
-  const duration = 4200;
-
-  const startTime = performance.now();
-
-
-  /* Animation */
-
-  function animate(now) {
-
-    const progress =
-      Math.min(
-        (now - startTime) / duration,
-        1
-      );
-
-    /* Smooth easing */
-
-    const ease =
-      1 - Math.pow(1 - progress, 4);
-
-
-    currentAngle =
-      startAngle +
-      (finalAngle - startAngle) *
-      ease;
-
-
-    drawWheel();
-
-
-    if (progress < 1) {
-
-      requestAnimationFrame(animate);
-
-    } else {
-
-      /* Finished */
-
-      currentAngle = finalAngle;
-
-      drawWheel();
-
-      spinning = false;
-
-      button.disabled = false;
-
-      button.textContent = "SPIN AGAIN ✦";
-
-      result.innerHTML =
-        `You got: <span>${gifts[index]}</span> 🎉`;
-
-      paperConfetti();
-
-      burstHearts();
+    if (spinning) {
+        return;
     }
-  }
 
 
-  requestAnimationFrame(animate);
+    /* Re-find canvas in case navigation happened */
+
+    if (!canvas) {
+        initializeWheel();
+    }
+
+
+    if (!canvas || !ctx) {
+
+        console.error(
+            "Wheel is not initialized."
+        );
+
+        return;
+    }
+
+
+    const button =
+        document.getElementById("spinBtn");
+
+    const result =
+        document.getElementById("wheelResult");
+
+
+    if (!button || !result) {
+
+        console.error(
+            "Spin button or result is missing."
+        );
+
+        return;
+    }
+
+
+    spinning = true;
+
+    button.disabled = true;
+
+    button.textContent =
+        "SPINNING... ♡";
+
+    result.textContent = "";
+
+
+    /* Random winning gift */
+
+    const index =
+        Math.floor(
+            Math.random() * gifts.length
+        );
+
+
+    const slice =
+        (Math.PI * 2) /
+        gifts.length;
+
+
+    /*
+       Pointer is at the top.
+       Calculate angle that places
+       selected slice in front of pointer.
+    */
+
+    const target =
+        -Math.PI / 2 -
+        (
+            index * slice +
+            slice / 2
+        );
+
+
+    const fullCircle =
+        Math.PI * 2;
+
+
+    const normalized =
+        ((currentAngle % fullCircle) +
+            fullCircle) %
+        fullCircle;
+
+
+    let delta =
+        target - normalized;
+
+
+    while (delta < 0) {
+
+        delta += fullCircle;
+    }
+
+
+    const extraSpins =
+        5 +
+        Math.floor(
+            Math.random() * 3
+        );
+
+
+    const startAngle =
+        currentAngle;
+
+
+    const finalAngle =
+        startAngle +
+        extraSpins * fullCircle +
+        delta;
+
+
+    const duration = 4200;
+
+    const startTime =
+        performance.now();
+
+
+    function animate(now) {
+
+        const progress =
+            Math.min(
+                (now - startTime) /
+                    duration,
+                1
+            );
+
+
+        /* Ease out */
+
+        const ease =
+            1 -
+            Math.pow(
+                1 - progress,
+                4
+            );
+
+
+        currentAngle =
+            startAngle +
+            (
+                finalAngle -
+                startAngle
+            ) * ease;
+
+
+        drawWheel();
+
+
+        if (progress < 1) {
+
+            requestAnimationFrame(
+                animate
+            );
+
+        } else {
+
+            currentAngle =
+                finalAngle;
+
+            drawWheel();
+
+
+            spinning = false;
+
+            button.disabled = false;
+
+            button.textContent =
+                "SPIN AGAIN ✦";
+
+
+            result.innerHTML =
+                `You got: <span>${gifts[index]}</span> 🎉`;
+
+
+            paperConfetti();
+
+            burstHearts();
+        }
+    }
+
+
+    requestAnimationFrame(
+        animate
+    );
 }
 
 
@@ -505,77 +690,134 @@ function spinWheel() {
 
 function paperConfetti() {
 
-  const pieces = 90;
-
-  for (let i = 0; i < pieces; i++) {
-
-    const piece =
-      document.createElement("span");
-
-    piece.className =
-      "paper-confetti";
-
-    const angle =
-      Math.random() * Math.PI * 2;
-
-    const distance =
-      180 + Math.random() * 520;
+    const pieces = 90;
 
 
-    piece.style.setProperty(
-      "--x",
-      Math.cos(angle) * distance + "px"
-    );
+    for (
+        let i = 0;
+        i < pieces;
+        i++
+    ) {
 
-    piece.style.setProperty(
-      "--y",
-      Math.sin(angle) * distance - 120 + "px"
-    );
-
-    piece.style.setProperty(
-      "--r",
-      Math.random() * 1080 - 540 + "deg"
-    );
-
-    piece.style.setProperty(
-      "--duration",
-      1.8 + Math.random() * 1.5 + "s"
-    );
+        const piece =
+            document.createElement("span");
 
 
-    piece.style.width =
-      6 + Math.random() * 7 + "px";
-
-    piece.style.height =
-      8 + Math.random() * 10 + "px";
+        piece.className =
+            "paper-confetti";
 
 
-    piece.style.borderRadius =
-      Math.random() > 0.6
-        ? "50%"
-        : "2px";
+        const angle =
+            Math.random() *
+            Math.PI *
+            2;
 
 
-    piece.style.background =
-      `hsl(${Math.floor(Math.random() * 360)}, 75%, 65%)`;
+        const distance =
+            180 +
+            Math.random() *
+            520;
 
 
-    piece.style.left =
-      50 + (Math.random() * 8 - 4) + "%";
-
-    piece.style.top =
-      52 + (Math.random() * 8 - 4) + "%";
-
-
-    document.body.appendChild(piece);
+        piece.style.setProperty(
+            "--x",
+            Math.cos(angle) *
+                distance +
+                "px"
+        );
 
 
-    setTimeout(() => {
+        piece.style.setProperty(
+            "--y",
+            Math.sin(angle) *
+                distance -
+                120 +
+                "px"
+        );
 
-      piece.remove();
 
-    }, 3500);
-  }
+        piece.style.setProperty(
+            "--r",
+            (
+                Math.random() *
+                    1080 -
+                540
+            ) +
+                "deg"
+        );
+
+
+        piece.style.setProperty(
+            "--duration",
+            (
+                1.8 +
+                Math.random() *
+                    1.5
+            ) +
+                "s"
+        );
+
+
+        piece.style.width =
+            6 +
+            Math.random() *
+                7 +
+            "px";
+
+
+        piece.style.height =
+            8 +
+            Math.random() *
+                10 +
+            "px";
+
+
+        piece.style.borderRadius =
+            Math.random() > 0.6
+                ? "50%"
+                : "2px";
+
+
+        piece.style.background =
+            `hsl(${
+                Math.floor(
+                    Math.random() * 360
+                )
+            }, 75%, 65%)`;
+
+
+        piece.style.left =
+            50 +
+            (
+                Math.random() *
+                    8 -
+                4
+            ) +
+            "%";
+
+
+        piece.style.top =
+            52 +
+            (
+                Math.random() *
+                    8 -
+                4
+            ) +
+            "%";
+
+
+        document.body.appendChild(
+            piece
+        );
+
+
+        setTimeout(
+            () => {
+                piece.remove();
+            },
+            3500
+        );
+    }
 }
 
 
@@ -585,29 +827,54 @@ function paperConfetti() {
 
 function reveal() {
 
-  const secretButton =
-    document.querySelector(".secret-btn");
-
-  const gift =
-    document.querySelector(".gift");
-
-  const finalMessage =
-    document.getElementById("finalMessage");
+    console.log(
+        "FINAL BUTTON CLICKED"
+    );
 
 
-  if (secretButton) {
-    secretButton.style.display = "none";
-  }
+    const secretButton =
+        document.querySelector(
+            ".secret-btn"
+        );
 
-  if (gift) {
-    gift.style.display = "none";
-  }
 
-  if (finalMessage) {
-    finalMessage.classList.add("show");
-  }
+    const gift =
+        document.querySelector(
+            ".gift"
+        );
 
-  burstHearts();
+
+    const finalMessage =
+        document.getElementById(
+            "finalMessage"
+        );
+
+
+    if (secretButton) {
+
+        secretButton.style.display =
+            "none";
+    }
+
+
+    if (gift) {
+
+        gift.style.display =
+            "none";
+    }
+
+
+    if (finalMessage) {
+
+        finalMessage.classList.add(
+            "show"
+        );
+    }
+
+
+    paperConfetti();
+
+    burstHearts();
 }
 
 
@@ -617,29 +884,47 @@ function reveal() {
 
 function restart() {
 
-  const finalMessage =
-    document.getElementById("finalMessage");
-
-  const secretButton =
-    document.querySelector(".secret-btn");
-
-  const gift =
-    document.querySelector(".gift");
+    const finalMessage =
+        document.getElementById(
+            "finalMessage"
+        );
 
 
-  if (finalMessage) {
-    finalMessage.classList.remove("show");
-  }
+    const secretButton =
+        document.querySelector(
+            ".secret-btn"
+        );
 
-  if (secretButton) {
-    secretButton.style.display = "inline-block";
-  }
 
-  if (gift) {
-    gift.style.display = "block";
-  }
+    const gift =
+        document.querySelector(
+            ".gift"
+        );
 
-  goTo("welcome");
+
+    if (finalMessage) {
+
+        finalMessage.classList.remove(
+            "show"
+        );
+    }
+
+
+    if (secretButton) {
+
+        secretButton.style.display =
+            "inline-block";
+    }
+
+
+    if (gift) {
+
+        gift.style.display =
+            "block";
+    }
+
+
+    goTo("welcome");
 }
 
 
@@ -649,44 +934,64 @@ function restart() {
 
 function createHeart() {
 
-  const heartsContainer =
-    document.getElementById("hearts");
-
-  if (!heartsContainer) {
-    return;
-  }
+    const heartsContainer =
+        document.getElementById(
+            "hearts"
+        );
 
 
-  const heart =
-    document.createElement("span");
-
-  heart.className =
-    "floating-heart";
-
-  heart.textContent =
-    Math.random() > 0.2
-      ? "♡"
-      : "✦";
+    if (!heartsContainer) {
+        return;
+    }
 
 
-  heart.style.left =
-    Math.random() * 100 + "vw";
-
-  heart.style.fontSize =
-    12 + Math.random() * 18 + "px";
-
-  heart.style.animationDuration =
-    7 + Math.random() * 7 + "s";
+    const heart =
+        document.createElement(
+            "span"
+        );
 
 
-  heartsContainer.appendChild(heart);
+    heart.className =
+        "floating-heart";
 
 
-  setTimeout(() => {
+    heart.textContent =
+        Math.random() > 0.2
+            ? "♡"
+            : "✦";
 
-    heart.remove();
 
-  }, 15000);
+    heart.style.left =
+        Math.random() *
+            100 +
+        "vw";
+
+
+    heart.style.fontSize =
+        12 +
+        Math.random() *
+            18 +
+        "px";
+
+
+    heart.style.animationDuration =
+        7 +
+        Math.random() *
+            7 +
+        "s";
+
+
+    heartsContainer.appendChild(
+        heart
+    );
+
+
+    setTimeout(
+        () => {
+            heart.remove();
+        },
+        15000
+    );
 }
 
 
@@ -696,14 +1001,17 @@ function createHeart() {
 
 function startHearts() {
 
-  for (let i = 0; i < 18; i++) {
+    for (
+        let i = 0;
+        i < 18;
+        i++
+    ) {
 
-    setTimeout(
-      createHeart,
-      i * 160
-    );
-
-  }
+        setTimeout(
+            createHeart,
+            i * 160
+        );
+    }
 }
 
 
@@ -713,14 +1021,17 @@ function startHearts() {
 
 function burstHearts() {
 
-  for (let i = 0; i < 50; i++) {
+    for (
+        let i = 0;
+        i < 50;
+        i++
+    ) {
 
-    setTimeout(
-      createHeart,
-      i * 35
-    );
-
-  }
+        setTimeout(
+            createHeart,
+            i * 35
+        );
+    }
 }
 
 
@@ -728,29 +1039,49 @@ function burstHearts() {
    RANDOM BACKGROUND HEARTS
 ========================================================= */
 
-setInterval(() => {
+setInterval(
+    () => {
 
-  if (
-    document.visibilityState === "visible"
-  ) {
-    createHeart();
-  }
+        if (
+            document.visibilityState ===
+            "visible"
+        ) {
 
-}, 1800);
+            createHeart();
+        }
+
+    },
+    1800
+);
 
 
 /* =========================================================
-   INITIALIZE
+   MAKE FUNCTIONS AVAILABLE TO HTML onclick
+========================================================= */
+
+window.goTo = goTo;
+window.flipCard = flipCard;
+window.openPhoto = openPhoto;
+window.closePhoto = closePhoto;
+window.toggleMusic = toggleMusic;
+window.spinWheel = spinWheel;
+window.reveal = reveal;
+window.restart = restart;
+
+
+/* =========================================================
+   PAGE INITIALIZATION
 ========================================================= */
 
 document.addEventListener(
-  "DOMContentLoaded",
-  () => {
+    "DOMContentLoaded",
+    () => {
 
-    setupSpotify();
+        setupSpotify();
 
-    drawWheel();
+        initializeWheel();
 
-  }
+        startHearts();
+
+    }
 );
-```
