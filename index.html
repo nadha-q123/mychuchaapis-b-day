@@ -2,69 +2,118 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
 <title>For Chuchh — Happy Birthday ♡</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- FONTS -->
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+
+<!-- CSS -->
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 
 <body>
 
+
+<!-- =====================================================
+     FLOATING HEARTS
+===================================================== -->
+
 <div id="hearts"></div>
 
 
-<!-- =========================
+<!-- =====================================================
      TOP BAR
-     ========================= -->
+===================================================== -->
 
 <header class="topbar">
 
-    <div class="logo">K ♡ N</div>
+    <div class="logo">
+        K ♡ N
+    </div>
 
-    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+    <button
+        class="music-btn"
+        id="musicBtn"
+        onclick="toggleMusic()">
+
         ♫
+
     </button>
 
 </header>
 
 
-<!-- =========================
-     WELCOME
-     ========================= -->
 
-<section class="screen active" id="welcome">
+<!-- =====================================================
+     WELCOME
+===================================================== -->
+
+<section
+    class="screen active"
+    id="welcome">
 
     <div class="intro">
 
-        <div class="ornament">✦ ♡ ✦</div>
-
-        <div class="envelope">
-            <div class="envelope-flap"></div>
-            <div class="letter-card">K</div>
+        <div class="ornament">
+            ✦ ♡ ✦
         </div>
 
-        <p class="eyebrow">A little surprise for you</p>
+
+        <div class="envelope">
+
+            <div class="envelope-flap"></div>
+
+            <div class="letter-card">
+                K
+            </div>
+
+        </div>
+
+
+        <p class="eyebrow">
+            A little surprise for you
+        </p>
+
 
         <h1>
             You have one<br>
             <span>special message.</span>
         </h1>
 
+
         <p class="subtext">
             Made especially for my Chuchapi. ♡
         </p>
 
-        <button class="btn"
-        onclick="document.getElementById('welcome').classList.remove('active'); document.getElementById('birthday').classList.add('active'); window.scrollTo(0,0);">
+
+        <button
+            class="btn"
+            onclick="goTo('birthday')">
+
             Open it ♡
+
         </button>
 
     </div>
@@ -73,11 +122,13 @@
 
 
 
-<!-- =========================
+<!-- =====================================================
      BIRTHDAY
-     ========================= -->
+===================================================== -->
 
-<section class="screen" id="birthday">
+<section
+    class="screen"
+    id="birthday">
 
     <div class="center">
 
@@ -85,27 +136,36 @@
             05 · 10 · 2006 — YOUR DAY
         </p>
 
+
         <h2>
             Happy Birthday,<br>
             <span>Kiran</span> ♡
         </h2>
 
+
         <p class="subtitle">
             My Chuchapi. My favorite person.
         </p>
+
 
         <p class="soft">
             I could've just wished you happy birthday...
         </p>
 
+
         <p class="soft">
-            <em>but you deserve a whole ass website.</em> 🥹
+            <em>
+                but you deserve a whole ass website.
+            </em>
+            🥹
         </p>
+
 
         <div class="photo-hero">
 
-            <img src="photo5.jpeg"
-                 alt="A memory of us at the beach">
+            <img
+                src="photo5.jpeg"
+                alt="A memory of us at the beach">
 
             <span>
                 one of our favorite memories ♡
@@ -113,9 +173,13 @@
 
         </div>
 
-        <button class="btn"
-        onclick="document.getElementById('birthday').classList.remove('active'); document.getElementById('story').classList.add('active'); window.scrollTo(0,0);">
+
+        <button
+            class="btn"
+            onclick="goTo('story')">
+
             Okay, show me →
+
         </button>
 
     </div>
@@ -124,11 +188,13 @@
 
 
 
-<!-- =========================
+<!-- =====================================================
      STORY
-     ========================= -->
+===================================================== -->
 
-<section class="screen" id="story">
+<section
+    class="screen"
+    id="story">
 
     <div class="page">
 
@@ -136,12 +202,14 @@
             OUR LITTLE STORY
         </p>
 
+
         <h2>
             From “aww” to <span>us</span> 🌷
         </h2>
 
 
         <div class="timeline">
+
 
             <article class="timeline-item">
 
@@ -165,6 +233,7 @@
                 </div>
 
             </article>
+
 
 
             <article class="timeline-item">
@@ -192,6 +261,7 @@
             </article>
 
 
+
             <article class="timeline-item">
 
                 <span class="dot"></span>
@@ -215,6 +285,7 @@
                 </div>
 
             </article>
+
 
 
             <article class="timeline-item">
@@ -242,6 +313,7 @@
             </article>
 
 
+
             <article class="timeline-item">
 
                 <span class="dot"></span>
@@ -265,12 +337,16 @@
 
             </article>
 
+
         </div>
 
 
-        <button class="btn"
-        onclick="document.getElementById('story').classList.remove('active'); document.getElementById('things').classList.add('active'); window.scrollTo(0,0);">
+        <button
+            class="btn"
+            onclick="goTo('things')">
+
             There's more →
+
         </button>
 
     </div>
@@ -279,11 +355,13 @@
 
 
 
-<!-- =========================
+<!-- =====================================================
      THINGS I LOVE
-     ========================= -->
+===================================================== -->
 
-<section class="screen" id="things">
+<section
+    class="screen"
+    id="things">
 
     <div class="page">
 
@@ -291,9 +369,11 @@
             A VERY SMALL LIST
         </p>
 
+
         <h2>
             Things I love about <span>you</span> 🫶
         </h2>
+
 
         <p class="hint">
             Tap each little heart.
@@ -303,10 +383,13 @@
         <div class="cards">
 
 
-            <button class="love-card"
-            onclick="flipCard(this)">
+            <button
+                class="love-card"
+                onclick="flipCard(this)">
 
-                <span class="front">♡</span>
+                <span class="front">
+                    ♡
+                </span>
 
                 <span class="back">
                     The way you care about me every time.
@@ -318,10 +401,14 @@
             </button>
 
 
-            <button class="love-card"
-            onclick="flipCard(this)">
 
-                <span class="front">♡</span>
+            <button
+                class="love-card"
+                onclick="flipCard(this)">
+
+                <span class="front">
+                    ♡
+                </span>
 
                 <span class="back">
                     Your stories & kona.
@@ -333,10 +420,14 @@
             </button>
 
 
-            <button class="love-card"
-            onclick="flipCard(this)">
 
-                <span class="front">♡</span>
+            <button
+                class="love-card"
+                onclick="flipCard(this)">
+
+                <span class="front">
+                    ♡
+                </span>
 
                 <span class="back">
                     How thoughtful & kind you are.
@@ -348,10 +439,14 @@
             </button>
 
 
-            <button class="love-card"
-            onclick="flipCard(this)">
 
-                <span class="front">♡</span>
+            <button
+                class="love-card"
+                onclick="flipCard(this)">
+
+                <span class="front">
+                    ♡
+                </span>
 
                 <span class="back">
                     Your kunji heart.
@@ -363,10 +458,14 @@
             </button>
 
 
-            <button class="love-card"
-            onclick="flipCard(this)">
 
-                <span class="front">♡</span>
+            <button
+                class="love-card"
+                onclick="flipCard(this)">
+
+                <span class="front">
+                    ♡
+                </span>
 
                 <span class="back">
                     Your chunjan. 😭♡
@@ -378,10 +477,14 @@
             </button>
 
 
-            <button class="love-card"
-            onclick="flipCard(this)">
 
-                <span class="front">♡</span>
+            <button
+                class="love-card"
+                onclick="flipCard(this)">
+
+                <span class="front">
+                    ♡
+                </span>
 
                 <span class="back">
                     How safe & happy I feel beside you.
@@ -393,10 +496,14 @@
             </button>
 
 
-            <button class="love-card"
-            onclick="flipCard(this)">
 
-                <span class="front">♡</span>
+            <button
+                class="love-card"
+                onclick="flipCard(this)">
+
+                <span class="front">
+                    ♡
+                </span>
 
                 <span class="back">
                     Every adventure we've shared.
@@ -408,10 +515,14 @@
             </button>
 
 
-            <button class="love-card"
-            onclick="flipCard(this)">
 
-                <span class="front">♡</span>
+            <button
+                class="love-card"
+                onclick="flipCard(this)">
+
+                <span class="front">
+                    ♡
+                </span>
 
                 <span class="back">
                     Our sneaky-peaky moments.
@@ -423,10 +534,14 @@
             </button>
 
 
-            <button class="love-card"
-            onclick="flipCard(this)">
 
-                <span class="front">♡</span>
+            <button
+                class="love-card"
+                onclick="flipCard(this)">
+
+                <span class="front">
+                    ♡
+                </span>
 
                 <span class="back">
                     Simply... you.
@@ -441,9 +556,12 @@
         </div>
 
 
-        <button class="btn"
-        onclick="document.getElementById('things').classList.remove('active'); document.getElementById('gallery').classList.add('active'); window.scrollTo(0,0);">
+        <button
+            class="btn"
+            onclick="goTo('gallery')">
+
             Our memories 📸 →
+
         </button>
 
     </div>
@@ -452,11 +570,13 @@
 
 
 
-<!-- =========================
+<!-- =====================================================
      GALLERY
-     ========================= -->
+===================================================== -->
 
-<section class="screen" id="gallery">
+<section
+    class="screen"
+    id="gallery">
 
     <div class="page">
 
@@ -464,9 +584,11 @@
             OUR LITTLE GALLERY
         </p>
 
+
         <h2>
             Moments I'd keep <span>forever</span> 📸
         </h2>
+
 
         <p class="hint">
             A few pieces of our story.
@@ -476,10 +598,13 @@
         <div class="gallery">
 
 
-            <button class="polaroid tilt-left"
-            onclick="openPhoto('photo1.jpeg','Look at you, Chuchapi ♡')">
+            <button
+                class="polaroid tilt-left"
+                onclick="openPhoto('photo1.jpeg','Look at you, Chuchapi ♡')">
 
-                <img src="photo1.jpeg" alt="">
+                <img
+                    src="photo1.jpeg"
+                    alt="">
 
                 <span>
                     look at you ♡
@@ -488,10 +613,14 @@
             </button>
 
 
-            <button class="polaroid tilt-right"
-            onclick="openPhoto('photo2.jpeg','Little Kiran 🥹')">
 
-                <img src="photo2.jpeg" alt="">
+            <button
+                class="polaroid tilt-right"
+                onclick="openPhoto('photo2.jpeg','Little Kiran 🥹')">
+
+                <img
+                    src="photo2.jpeg"
+                    alt="">
 
                 <span>
                     little Kiran 🥹
@@ -500,10 +629,14 @@
             </button>
 
 
-            <button class="polaroid tilt-left"
-            onclick="openPhoto('photo3.jpeg','That cute smile. ♡')">
 
-                <img src="photo3.jpeg" alt="">
+            <button
+                class="polaroid tilt-left"
+                onclick="openPhoto('photo3.jpeg','That cute smile. ♡')">
+
+                <img
+                    src="photo3.jpeg"
+                    alt="">
 
                 <span>
                     that cute smile ♡
@@ -512,10 +645,14 @@
             </button>
 
 
-            <button class="polaroid tilt-right"
-            onclick="openPhoto('photo4.jpeg','looking like a wow😭')">
 
-                <img src="photo4.jpeg" alt="">
+            <button
+                class="polaroid tilt-right"
+                onclick="openPhoto('photo4.jpeg','looking like a wow😭')">
+
+                <img
+                    src="photo4.jpeg"
+                    alt="">
 
                 <span>
                     looking like a wow😭
@@ -524,10 +661,14 @@
             </button>
 
 
-            <button class="polaroid big tilt-left"
-            onclick="openPhoto('photo5.jpeg','One of my favorite memories. ❤️')">
 
-                <img src="photo5.jpeg" alt="">
+            <button
+                class="polaroid big tilt-left"
+                onclick="openPhoto('photo5.jpeg','One of my favorite memories. ❤️')">
+
+                <img
+                    src="photo5.jpeg"
+                    alt="">
 
                 <span>
                     one of my favorite memories ❤️
@@ -536,10 +677,14 @@
             </button>
 
 
-            <button class="polaroid big tilt-right"
-            onclick="openPhoto('photo6.jpeg','Us being us. ♡')">
 
-                <img src="photo6.jpeg" alt="">
+            <button
+                class="polaroid big tilt-right"
+                onclick="openPhoto('photo6.jpeg','Us being us. ♡')">
+
+                <img
+                    src="photo6.jpeg"
+                    alt="">
 
                 <span>
                     us being us ♡
@@ -548,10 +693,14 @@
             </button>
 
 
-            <button class="polaroid tilt-left"
-            onclick="openPhoto('photo7.jpeg','The sleepy bus memory.')">
 
-                <img src="photo7.jpeg" alt="">
+            <button
+                class="polaroid tilt-left"
+                onclick="openPhoto('photo7.jpeg','The sleepy bus memory.')">
+
+                <img
+                    src="photo7.jpeg"
+                    alt="">
 
                 <span>
                     the sleepy bus memory
@@ -563,9 +712,12 @@
         </div>
 
 
-        <button class="btn"
-        onclick="document.getElementById('gallery').classList.remove('active'); document.getElementById('music').classList.add('active'); window.scrollTo(0,0);">
+        <button
+            class="btn"
+            onclick="goTo('music')">
+
             A playlist for you 🎧 →
+
         </button>
 
     </div>
@@ -574,11 +726,13 @@
 
 
 
-<!-- =========================
+<!-- =====================================================
      MUSIC
-     ========================= -->
+===================================================== -->
 
-<section class="screen" id="music">
+<section
+    class="screen"
+    id="music">
 
     <div class="page music-page">
 
@@ -586,9 +740,11 @@
             PRESS PLAY
         </p>
 
+
         <h2>
             Our little <span>soundtrack</span> 🎧
         </h2>
+
 
         <p class="subtitle">
             For the moments when words aren't enough.
@@ -614,8 +770,10 @@
                 YOUR SPOTIFY PLAYLIST
             </p>
 
+
             <p class="hint">
-                A little soundtrack for us — picked especially for you. ♡
+                A little soundtrack for us —
+                picked especially for you. ♡
             </p>
 
 
@@ -634,9 +792,12 @@
         </div>
 
 
-        <button class="btn"
-        onclick="document.getElementById('music').classList.remove('active'); document.getElementById('letter').classList.add('active'); window.scrollTo(0,0);">
+        <button
+            class="btn"
+            onclick="goTo('letter')">
+
             Now for the letter 💌 →
+
         </button>
 
     </div>
@@ -645,17 +806,20 @@
 
 
 
-<!-- =========================
+<!-- =====================================================
      LETTER
-     ========================= -->
+===================================================== -->
 
-<section class="screen" id="letter">
+<section
+    class="screen"
+    id="letter">
 
     <div class="page letter-page">
 
         <p class="eyebrow">
             THE LITTLE BIRTHDAY EDITION · NO. 01
         </p>
+
 
         <h2>
             The things I <span>never want to forget</span>
@@ -756,9 +920,12 @@
         </div>
 
 
-        <button class="btn"
-        onclick="document.getElementById('letter').classList.remove('active'); document.getElementById('wheel').classList.add('active'); window.scrollTo(0,0);">
+        <button
+            class="btn"
+            onclick="goTo('wheel')">
+
             One last surprise... 🎁 →
+
         </button>
 
     </div>
@@ -767,11 +934,13 @@
 
 
 
-<!-- =========================
+<!-- =====================================================
      WHEEL
-     ========================= -->
+===================================================== -->
 
-<section class="screen" id="wheel">
+<section
+    class="screen"
+    id="wheel">
 
     <div class="page wheel-page">
 
@@ -779,12 +948,15 @@
             YOUR BIRTHDAY GIFT
         </p>
 
+
         <h2>
             Spin for your <span>surprise</span> 🎁
         </h2>
 
+
         <p class="hint">
-            Whatever it lands on... you still get a birthday hug. ♡
+            Whatever it lands on...
+            you still get a birthday hug. ♡
         </p>
 
 
@@ -793,6 +965,7 @@
             <div class="pointer">
                 ▼
             </div>
+
 
             <canvas
                 id="wheelCanvas"
@@ -806,8 +979,11 @@
         <button
             class="btn spin-button"
             id="spinBtn"
+            type="button"
             onclick="spinWheel()">
+
             SPIN THE WHEEL ✦
+
         </button>
 
 
@@ -817,9 +993,13 @@
         </p>
 
 
-        <button class="btn secondary"
-        onclick="document.getElementById('wheel').classList.remove('active'); document.getElementById('final').classList.add('active'); window.scrollTo(0,0);">
+        <button
+            class="btn secondary"
+            type="button"
+            onclick="goTo('final')">
+
             I'm ready for the last thing →
+
         </button>
 
     </div>
@@ -828,11 +1008,13 @@
 
 
 
-<!-- =========================
+<!-- =====================================================
      FINAL
-     ========================= -->
+===================================================== -->
 
-<section class="screen final-screen" id="final">
+<section
+    class="screen final-screen"
+    id="final">
 
     <div class="center">
 
@@ -840,9 +1022,11 @@
             🎁
         </div>
 
+
         <p class="eyebrow">
             THE LAST SURPRISE
         </p>
+
 
         <h2>
             Don't click this.
@@ -851,8 +1035,11 @@
 
         <button
             class="secret-btn"
+            type="button"
             onclick="reveal()">
+
             Definitely don't click
+
         </button>
 
 
@@ -864,24 +1051,29 @@
                 ♡ ✦ ♡ ✦ ♡ ✦ ♡
             </div>
 
+
             <h2>
                 Happy Birthday,
                 <span>Kiran.</span> ❤️
             </h2>
+
 
             <p>
                 Chuchapi, if you ever forget how loved you are,
                 come back here.
             </p>
 
+
             <p class="large-love">
                 You are so, so special to me.
             </p>
+
 
             <p>
                 Here's to more adventures, more stories,
                 more laughs, more chaos and many more birthdays together. ♡
             </p>
+
 
             <p class="signature-final">
                 With all my love,<br>
@@ -891,8 +1083,11 @@
 
             <button
                 class="btn"
+                type="button"
                 onclick="restart()">
+
                 Replay our story ↻
+
             </button>
 
         </div>
@@ -903,39 +1098,45 @@
 
 
 
-<!-- =========================
+<!-- =====================================================
      LIGHTBOX
-     ========================= -->
+===================================================== -->
 
 <div
     class="lightbox"
     id="lightbox"
     onclick="closePhoto(event)">
 
+
     <button
         class="close"
+        type="button"
         onclick="closePhoto()">
+
         ×
+
     </button>
+
 
     <img
         id="lightboxImg"
         src=""
         alt="">
 
-    <p
-        id="lightboxCaption">
-    </p>
+
+    <p id="lightboxCaption"></p>
 
 </div>
 
 
 
-<!-- =========================
+<!-- =====================================================
      AUDIO
-     ========================= -->
+===================================================== -->
 
-<audio id="audio" loop>
+<audio
+    id="audio"
+    loop>
 
     <source
         src=""
@@ -945,6 +1146,12 @@
 
 
 
-<!-- JAVASCRIPT -->
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script src="script.js"></script>
+
+</body>
+
+</html>
