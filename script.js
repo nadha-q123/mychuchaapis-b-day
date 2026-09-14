@@ -7,7 +7,7 @@
    PERSONAL SETTINGS
 ========================================================= */
 
-const SPOTIFY_PLAYLIST_URL = "";
+const SPOTIFY_PLAYLIST_URL = "https://open.spotify.com/playlist/0nVwYuyQeo4Gn0JG6Mx4Hw?si=JWK02CGtRf-Bzf6dybAsvA";
 
 
 /* =========================================================
